@@ -1,0 +1,12 @@
+services:
+  dbt_core_engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dbt_core
+    env_file:                
+      - .env                 
+    volumes:
+      - ./my_dbt_project:/usr/app/dbt_project
+      - ./my_dbt_project/.dbt:/root/.dbt
+    working_dir: /usr/app/dbt_project
